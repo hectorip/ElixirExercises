@@ -26,3 +26,10 @@ l3 = [1 | [2,3,4,5]]
 hd(l1) # returns head of a list
 tl(l1) # returns tail
 
+# Efficient Insertion
+
+my_list = [1, 2, 3]
+
+my_list = [0 | my_list]
+
+
