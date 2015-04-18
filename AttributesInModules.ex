@@ -1,4 +1,5 @@
-defmodule Circle do
+# This ia a comment
+defmodule Circle do # Also this
   @moduledoc "Implements basic circle fucntions"
   @pi 3.141592
 
