@@ -30,3 +30,11 @@ IO.puts "Finishing."
 {_,{hour,_,_}} = :calendar.local_time
 
 IO.puts hour
+
+# Elixir will only bind a variable one time per bind
+[a, a] = [1, 1]
+#t this will not pass
+# [a, a] = [1, 2]
+# this will not fail
+a = 1
+a = 2
