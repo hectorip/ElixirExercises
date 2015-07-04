@@ -35,6 +35,7 @@ IO.puts hour
 [a, a] = [1, 1]
 #t this will not pass
 # [a, a] = [1, 2]
+
 # this will not fail
 a = 1
 a = 2
