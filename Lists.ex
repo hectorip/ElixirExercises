@@ -1,4 +1,4 @@
-prime_numbers = [1,2,3,5,7]
+prime_numbers = [1, 2, 3, 5, 7]
 
 IO.puts length(prime_numbers)
 
@@ -17,6 +17,9 @@ other_primes = [17, 19]
 # Concatenating
 complete_primes = prime_numbers ++ other_primes
 
+# Substract
+removing_primes = complete_primes -- [1, 7]
+
 # Head and tail, like a prepend
 
 l1 = [1 | []]
@@ -31,5 +34,3 @@ tl(l1) # returns tail
 my_list = [1, 2, 3]
 
 my_list = [0 | my_list]
-
-
