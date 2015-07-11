@@ -34,3 +34,10 @@ tl(l1) # returns tail
 my_list = [1, 2, 3]
 
 my_list = [0 | my_list]
+
+# Pair value shortcuts
+
+pair_value_list = [ name: "Héctor", age: 10 ]
+puts pair_value_list[:name]
+# and you can use
+# pair_value_list = [ name: "Héctor", age: 10]

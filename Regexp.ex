@@ -13,4 +13,3 @@ Enum.each(
     print_anon
 )
 
-
