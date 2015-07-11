@@ -9,14 +9,13 @@ a = 4
 4=a
 
 # will not match
-[a,b]=[1,2,3] 
+#[a,b]=[1,2,3] 
 
-# will not match
-
+# will match
 a=[[1,2,3]]
 
 # will match
 [a]=[[1,2,3]]
 
 #will not match
-[[a]]=[[1,2,3]]
+#[[a]]=[[1,2,3]]
