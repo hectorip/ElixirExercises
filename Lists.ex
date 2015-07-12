@@ -6,7 +6,7 @@ IO.puts Enum.at(prime_numbers, 4)
 
 List.replace_at(prime_numbers, 0, 11)
 
-List.instert_at(prime_numbers, 0, 1)
+# List.instert_at(prime_numbers, 0, 1)
 
 # Inserting with a negative numbers
 
@@ -38,6 +38,14 @@ my_list = [0 | my_list]
 # Pair value shortcuts
 
 pair_value_list = [ name: "Héctor", age: 10 ]
-puts pair_value_list[:name]
+IO.puts pair_value_list[:name]
 # and you can use
 # pair_value_list = [ name: "Héctor", age: 10]
+
+
+# Difference
+
+a = [1, 2, 3] -- [2]
+
+# Membership
+IO.puts (2 in a)
