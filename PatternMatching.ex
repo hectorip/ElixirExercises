@@ -39,3 +39,28 @@ IO.puts hour
 # this will not fail
 a = 1
 a = 2
+
+
+# Variables bind once per match
+
+# this will fail
+# [a, b, a] = [1, 2, 3] 
+# [a, b, a] = [1, 1, 2]
+# this will pass
+[a, b, a] = [1, 2, 1]
+
+# Working with pin operator
+
+a = 2
+# This will fail, not because a is 2 but because it
+# was rebound and the third element was not equal
+
+# [a, b, a] = [1, 2, 3]
+# [a, b, a] = [1, 1, 2]
+
+a = 1 # No problem
+
+# ^a = 2 
+^a = 1
+^a = 2 - a # This will pass
+IO.puts a
