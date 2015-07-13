@@ -1,7 +1,7 @@
 
 greet = fn name ->
   fn ->
-    IO.puts "Hello {# name}"
+    IO.puts "Hello #{name}"
   end
 end
 
