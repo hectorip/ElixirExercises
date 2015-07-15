@@ -1,7 +1,7 @@
 defmodule Guess do
   def guess(actual, range) do
-    _..last = range
-    my_guess = div(last, 2)
+    first..last = range
+    my_guess = first + div(last, 2)
     compare(actual, my_guess, range)
   end
 
