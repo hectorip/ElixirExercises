@@ -1,3 +1,5 @@
+# This exercise includes guards, ranges and pattern matching
+
 defmodule Guess do
   def guess(actual, range) do
     first..last = range
