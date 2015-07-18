@@ -16,4 +16,6 @@ IO.puts("\nProcess Working Directory\n")
 cwd = System.cwd()
 IO.puts("Current Working directory is #{cwd}")
 
-IO.puts("\nExecuting a commang in the shell")
+IO.puts("\nExecuting a command in the shell")
+{cwd_s, _} = System.cmd("pwd",[])
+IO.puts("Current Working directory got by shell is #{cwd_s}")
