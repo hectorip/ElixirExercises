@@ -11,3 +11,9 @@ IO.puts("PATH is #{path}")
 IO.puts("\nExtension of a file\n")
 ext = Path.extname("/dir/MyFile.txt")
 IO.puts("\nExtension is: #{ext}\n")
+
+IO.puts("\nProcess Working Directory\n")
+cwd = System.cwd()
+IO.puts("Current Working directory is #{cwd}")
+
+IO.puts("\nExecuting a commang in the shell")
