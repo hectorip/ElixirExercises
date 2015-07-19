@@ -5,6 +5,17 @@ defmodule MyList do
     def mapsum([], _op), do: 0
     def mapsum([head | tail], op), do: op.(head) + mapsum(tail, op)
 
+    def max([], acc \\ 0 ), do: acc
+
+    def max([head | tail], acc \\ 0)
+
+    def max([head | tail], acc \\ 0) when acc < head do
+        max(tail, head)
+    end
+    def max([head | tail], acc \\ 0) when acc > head do
+      max(tail, acc)
+    end
+
 end
 
 IO.puts("Testing List recursion on Sum")
@@ -18,4 +29,12 @@ IO.inspect(test_list_2)
 op = fn x -> x * x end
 
 IO.puts(MyList.mapsum(test_list_2, op))
+
+IO.puts("Testing max")
+test_list_max = [100, 10, 11, 12, 13, 14, 15]
+IO.inspect(test_list_max)
+IO.puts(MyList.max(test_list_max))
+IO.puts(MyList.max(test_list_2))
+IO.puts(MyList.max(test_list))
+
 
