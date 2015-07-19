@@ -1,20 +1,21 @@
 defmodule MyList do
-    def sum([]), do: 0
-    def sum([head | tail]), do: head + sum(tail)
+  def sum([]), do: 0
+  def sum([head | tail]), do: head + sum(tail)
 
-    def mapsum([], _op), do: 0
-    def mapsum([head | tail], op), do: op.(head) + mapsum(tail, op)
+  def mapsum([], _op), do: 0
+  def mapsum([head | tail], op), do: op.(head) + mapsum(tail, op)
 
-    def max([], acc \\ 0 ), do: acc
 
-    def max([head | tail], acc \\ 0)
+  def max(list, acc \\ 0)
 
-    def max([head | tail], acc \\ 0) when acc < head do
-        max(tail, head)
-    end
-    def max([head | tail], acc \\ 0) when acc > head do
-      max(tail, acc)
-    end
+  def max([], acc), do: acc
+
+  def max([head | tail], acc) when acc < head do
+    MyList.max(tail, head)
+  end
+  def max([head | tail], acc) when acc > head do
+    MyList.max(tail, acc)
+  end
 
 end
 
