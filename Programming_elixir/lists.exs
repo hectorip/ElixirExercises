@@ -20,6 +20,9 @@ defmodule MyList do
   def caesar([], _n), do: []
   def caesar([head | tail], n) when head + n > 122 , do: ([head + n - 26] ) ++ caesar(tail, n)
   def caesar([head | tail], n), do: [head + n] ++ caesar(tail, n)
+
+  def span(from, to) when from <= to, do: [from] ++  span(from + 1, to)
+  def span(from, to), do: []
 end
 
 IO.puts("Testing List recursion on Sum")
@@ -49,4 +52,7 @@ IO.puts(MyList.caesar(test_str, 1))
 test_str = 'ryvkve'
 IO.puts(MyList.caesar(test_str, 13))
 
+
+IO.puts("Testing span")
+IO.inspect(MyList.span(1,7))
 
