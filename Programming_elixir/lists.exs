@@ -17,6 +17,8 @@ defmodule MyList do
     MyList.max(tail, acc)
   end
 
+  def caesar([], _n), do: []
+  def caesar([head | tail], n), do: [head + n] ++ caesar(tail, n)
 end
 
 IO.puts("Testing List recursion on Sum")
@@ -28,7 +30,6 @@ IO.puts("Testing mapsum")
 test_list_2 = [1, 2, 3, 4]
 IO.inspect(test_list_2)
 op = fn x -> x * x end
-
 IO.puts(MyList.mapsum(test_list_2, op))
 
 IO.puts("Testing max")
@@ -40,5 +41,9 @@ IO.puts(MyList.max(test_list))
 IO.puts(MyList.max([1]))
 IO.puts(MyList.max([]))
 IO.puts(MyList.max([10, 1, 0, 100, 3, 101, 10000, 0, 100]))
+
+IO.puts("Testing caesar")
+test_str = 'abc'
+IO.puts(MyList.caesar(test_str, 1))
 
 
