@@ -6,11 +6,11 @@ defmodule MyList do
   def mapsum([head | tail], op), do: op.(head) + mapsum(tail, op)
 
 
-  def max(list, acc \\ 0)
+  def max(list, acc \\ nil)
 
   def max([], acc), do: acc
 
-  def max([head | tail], acc) when acc < head do
+  def max([head | tail], acc) when acc < head or acc == nil do
     MyList.max(tail, head)
   end
   def max([head | tail], acc) when acc > head do
@@ -37,5 +37,8 @@ IO.inspect(test_list_max)
 IO.puts(MyList.max(test_list_max))
 IO.puts(MyList.max(test_list_2))
 IO.puts(MyList.max(test_list))
+IO.puts(MyList.max([1]))
+IO.puts(MyList.max([]))
+IO.puts(MyList.max([10, 1, 0, 100, 3, 101, 10000, 0, 100]))
 
 
