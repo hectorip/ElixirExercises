@@ -18,6 +18,7 @@ defmodule MyList do
   end
 
   def caesar([], _n), do: []
+  def caesar([head | tail], n) when head + n > 122 , do: ([head + n - 26] ) ++ caesar(tail, n)
   def caesar([head | tail], n), do: [head + n] ++ caesar(tail, n)
 end
 
@@ -45,5 +46,7 @@ IO.puts(MyList.max([10, 1, 0, 100, 3, 101, 10000, 0, 100]))
 IO.puts("Testing caesar")
 test_str = 'abc'
 IO.puts(MyList.caesar(test_str, 1))
+test_str = 'ryvkve'
+IO.puts(MyList.caesar(test_str, 13))
 
 
