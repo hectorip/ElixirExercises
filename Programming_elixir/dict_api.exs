@@ -20,3 +20,17 @@ IO.inspect col_map
 
 col_hd = Enum.into collection, HashDict.new
 IO.inspect col_hd
+
+# Obtaining an element is the same
+IO.inspect collection[:language]
+IO.inspect col_map[:language]
+IO.inspect col_hd[:language]
+
+# but you can also replace
+
+col_hd = Dict.drop col_hd, [:language]
+IO.puts "Removing Element :language"
+IO.inspect col_hd
+IO.puts "Adding(put) Element :language"
+col_hd= Dict.put col_hd, :language, [:Elixir, :JavaScript]
+IO.inspect col_hd
