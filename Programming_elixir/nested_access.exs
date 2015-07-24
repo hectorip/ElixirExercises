@@ -15,4 +15,4 @@ user_1 = %User{ user_1 | name: "Iván"}
 IO.puts user_1.name
 IO.puts group_1.director.name
 
-group_1 = %Gopup{ group_1 | director: %User{ user_1 | name: "Pedro"}}
+group_1 = %Group{ group_1 | director: %User{ user_1 | name: "Pedro"}}
