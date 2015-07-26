@@ -37,4 +37,18 @@ defmodule Enums do
     [head] ++ take(tail, n-1)
   end
   
+  def flatten([]), do: []
+  #def flatten(val) when val
+
+  def flatten([head|tail]) do
+    IO.inspect head
+    flatten_(head)] ++ flatten_(tail)
+  end
+  def flatten_([[head|tail]| _tail]) do
+    flatten_([head|tail])
+  end
+  def flatten_(val) do
+    IO.puts "Resolving #{val}"
+    val
+  end
 end
