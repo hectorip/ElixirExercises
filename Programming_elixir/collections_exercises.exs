@@ -13,4 +13,12 @@ defmodule Enums do
     f.(head)
     Enums.each(tail,f)
   end
+  def filter([], _f), do: []
+  def filter([head|tail], f) do 
+    if f.(head) do
+      [head] ++ filter(tail, f)
+    else
+      filter(tail, f)
+    end
+  end
 end
