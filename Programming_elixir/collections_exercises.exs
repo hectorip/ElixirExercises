@@ -44,14 +44,17 @@ defmodule Enums do
     flatten_(col, [])
   end
   defp flatten_([], acc), do: acc
-  defp flatten_([[head|tail]|tail2],acc) do
-   acc ++ flatten_([head|tail],[]) ++ flatten_(tail2,[])
+  defp flatten_([h = [head|tail]|tail2],acc) do
+    IO.puts "nest"
+    IO.inspect h
+   acc ++ flatten_(h,[]) ++ flatten_(tail2,[])
+  end
+  defp flatten_([[]|tail], acc) do
+    acc ++ flatten_(tail, [])
   end
   defp flatten_([head|tail], acc) do
+    IO.puts "Resolving #{head}"
+    IO.inspect tail
     acc ++ [head] ++ flatten_(tail,[])
-  end
-  defp flatten_(val,acc) do
-    IO.puts "Resolving #{val}"
-    acc + val
   end
 end
