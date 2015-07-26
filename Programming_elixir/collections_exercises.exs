@@ -24,11 +24,17 @@ defmodule Enums do
   def split(col, n) do
     split_(col,n,{[],[]})
   end
-  def split_([],_n,acc), do: acc
-  def split_([head|tail], n, {left, right}) when n > 0 do
+  defp split_([],_n,acc), do: acc
+  defp split_([head|tail], n, {left, right}) when n > 0 do
     split_(tail,n-1,{left ++ [head], right})
   end
-  def split_(tail, n, {left, right}) when n == 0 do
+  defp split_(tail, n, {left, right}) when n == 0 do
     {left, right ++ tail}
   end
+  def take([], _n), do: []
+  def take(_c, 0), do: []
+  def take([head|tail], n) when n > 0 do
+    [head] ++ take(tail, n-1)
+  end
+  
 end
