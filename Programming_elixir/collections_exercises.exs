@@ -40,8 +40,11 @@ defmodule Enums do
     flatten_(col, [])
   end
   defp flatten_([], acc), do: acc
-  defp flatten_([h = [_head|_tail]|tail2],acc) do
-   flatten_(h,[]) ++ flatten_(tail2,acc)
+  defp flatten_([head = [_h|_t]|tail], acc) do
+   flatten_(head, []) ++ flatten_(tail, acc)
+  end
+  defp flatten_([[]|tail], acc) do
+    flatten_(tail, acc)
   end
   defp flatten_([head|tail], acc) do
     [head| flatten_(tail,acc)]
