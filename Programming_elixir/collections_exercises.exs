@@ -41,12 +41,9 @@ defmodule Enums do
   end
   defp flatten_([], acc), do: acc
   defp flatten_([h = [_head|_tail]|tail2],acc) do
-   acc ++ flatten_(h,[]) ++ flatten_(tail2,[])
-  end
-  defp flatten_([[]|tail], acc) do
-    acc ++ flatten_(tail, [])
+   flatten_(h,[]) ++ flatten_(tail2,acc)
   end
   defp flatten_([head|tail], acc) do
-    acc ++ [head] ++ flatten_(tail,[])
+    [head| flatten_(tail,acc)]
   end
 end
