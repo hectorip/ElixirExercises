@@ -36,10 +36,6 @@ defmodule Enums do
   def take([head|tail], n) when n > 0 do
     [head] ++ take(tail, n-1)
   end
-  
-  def flatten([]), do: []
-  #def flatten(val) when val
-
   def flatten(col) do
     flatten_(col, [])
   end
