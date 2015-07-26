@@ -8,4 +8,9 @@ defmodule Enums do
   defp _all([head|tail], f, acc) do
     _all(tail, f, f.(head) and acc)
   end
+  def each([], _f), do: :ok
+  def each([head|tail], f) do
+    f.(head)
+    Enums.each(tail,f)
+  end
 end
