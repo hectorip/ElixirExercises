@@ -45,13 +45,13 @@ defmodule Enums do
   end
   defp flatten_([], acc), do: acc
   defp flatten_([[head|tail]|tail2],acc) do
-   acc ++ flatten_([head|tail]) ++ flatten_(tail,[])
+   acc ++ flatten_([head|tail],[]) ++ flatten_(tail2,[])
   end
   defp flatten_([head|tail], acc) do
     acc ++ [head] ++ flatten_(tail,[])
   end
   defp flatten_(val,acc) do
     IO.puts "Resolving #{val}"
-    val
+    acc + val
   end
 end
