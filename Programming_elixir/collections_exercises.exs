@@ -1,11 +1,14 @@
 
 defmodule Enums do
+  def all?(list, _f \\ _f = fn x -> x end )
   def all?([],_f), do: false
   def all?(list, f) do
+    IO.inspect f.("Hole")
     _all(list, f, true)
   end
   defp _all([], _f, acc), do: acc
   defp _all([head|tail], f, acc) do
+    IO.inspect f
     _all(tail, f, f.(head) and acc)
   end
   def each([], _f), do: :ok
