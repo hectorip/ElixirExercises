@@ -52,8 +52,8 @@ defmodule Enums do
   end
   def span(from, to) when from <= to, do: [from] ++  span(from + 1, to)
   def span(from, to), do: []
+  def prime(2), do: []
   def prime(n) do
-    range = for x <- span(2,n),y <- span(2,div(x,2)), rem(x,y) == 0, do: x
-    IO.inspect range
+    range = for x <- span(2,n), y <-[(for z <- span(2, x-1), rem(x, z)==0, do: z)], length(y) == 0, do: x
   end
 end
