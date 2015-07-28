@@ -50,4 +50,10 @@ defmodule Enums do
   defp flatten_([head|tail], acc) do
     [head| flatten_(tail,acc)]
   end
+  def span(from, to) when from <= to, do: [from] ++  span(from + 1, to)
+  def span(from, to), do: []
+  defp prime(n) do
+    range = for x <- span(2,n) do 
+    
+  end
 end
