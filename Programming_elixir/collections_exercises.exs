@@ -56,4 +56,6 @@ defmodule Enums do
   def prime(n) do
     range = for x <- span(2,n), y <-[(for z <- span(2, x-1), rem(x, z)==0, do: z)], length(y) == 0, do: x
   end
+  def taxes(orders, tax_rates):
+    new_list = for o <- orders, tax_rates[order[:ship_to]], do: o ++ [total_amount: o[:net_amount] * 1 + tax_rates[order[:ship_to]]]
 end
