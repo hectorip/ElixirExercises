@@ -13,6 +13,16 @@ defmodule SB do
     word2 = word2 -- [h]
     anagram?(word1, word2)
   end
+  def calculate(calc) do
+    _calc(calc, [])
+  end
+  defp _calc([h|t], acc) when h in '+-*/' do
+    
+  end
+  defp _calc([h|t], acc) do
+    _calc(t, acc ++ [h])
+  end
+  
 end
   [ 'cat' | 'dog' ]
   # It prints that because the first element is a list inside the list
