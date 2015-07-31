@@ -9,7 +9,7 @@ defmodule SB do
   def anagram?([],[]), do: true
   def anagram?(word1, word2) when word1 == [] or word2 == [], do: false
   def anagram?(word1, word2) do
-    [h, word1] = word1
+    [h | word1] = word1
     word2 = word2 -- [h]
     anagram?(word1, word2)
   end
