@@ -14,13 +14,14 @@ defmodule SB do
     anagram?(word1, word2)
   end
   def calculate(calc) do
-    _calc(calc, [])
+    _calc(calc, <<>>)
   end
-  defp _calc([h|t], acc) when h in '+-*/' do
-    
+  defp _calc([], acc), do Integer.parse(acc)
+  defp _calc([h|t], acc) when h == '+' do
+    Integer.parse(acc) + _calc(t, <<>>)
   end
   defp _calc([h|t], acc) do
-    _calc(t, acc ++ [h])
+    _calc(t, acc <> <<h>> )
   end
   
 end
