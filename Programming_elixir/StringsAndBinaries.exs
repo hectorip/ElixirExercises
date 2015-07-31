@@ -16,9 +16,14 @@ defmodule SB do
   def calculate(calc) do
     _calc(calc, <<>>)
   end
-  defp _calc([], acc), do Integer.parse(acc)
-  defp _calc([h|t], acc) when h == '+' do
-    Integer.parse(acc) + _calc(t, <<>>)
+  defp _calc([], acc) do
+    IO.puts(acc)
+    {i, _} =Integer.parse(acc)
+    i
+  end
+  defp _calc([h|t], acc) when [h] == '+' do
+    {i, _} = Integer.parse(acc)
+    i + (_calc(t, <<>>))
   end
   defp _calc([h|t], acc) do
     _calc(t, acc <> <<h>> )
