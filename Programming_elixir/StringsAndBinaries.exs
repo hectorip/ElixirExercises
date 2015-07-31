@@ -25,6 +25,19 @@ defmodule SB do
     {i, _} = Integer.parse(acc)
     i + (_calc(t, <<>>))
   end
+  defp _calc([h|t], acc) when [h] == '-' do
+    {i, _} = Integer.parse(acc)
+    i - (_calc(t, <<>>))
+  end
+
+  defp _calc([h|t], acc) when [h] == '*' do
+    {i, _} = Integer.parse(acc)
+    i * (_calc(t, <<>>))
+  end
+  defp _calc([h|t], acc) when [h] == '/' do
+    {i, _} = Integer.parse(acc)
+    i / (_calc(t, <<>>))
+  end
   defp _calc([h|t], acc) do
     _calc(t, acc <> <<h>> )
   end
