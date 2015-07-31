@@ -14,3 +14,7 @@ defmodule SB do
     anagram?(word1, word2)
   end
 end
+  [ 'cat' | 'dog' ]
+  # It prints that because the first element is a list inside the list
+  # the head element is always a single element of the list.
+  # ['cat',100,111,103]
