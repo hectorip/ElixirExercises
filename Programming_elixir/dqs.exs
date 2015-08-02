@@ -21,6 +21,7 @@ defmodule Dqs do
   end
   def parse(csv) do
     file = File.open!(csv)
-    for line <- IO.stream(file), do line
+    IO.read(file, :line)
+    for line <- IO.stream(file, :line), do: line
   end
 end
