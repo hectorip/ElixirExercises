@@ -22,6 +22,12 @@ defmodule Dqs do
   def parse(csv) do
     file = File.open!(csv)
     IO.read(file, :line)
-    for line <- IO.stream(file, :line), do: line
+    for line <- IO.stream(file, :line) do
+      [id, ship_to, net_amount] = String.split(line,",")
+      {id, _} = Integer.parse(id)
+      {net_amount, _} = Float.parse(net_amount)
+      <<_::utf8,ship_to::binary>> = ship_to
+      [id: id, ship_to: String.to_atom(ship_to), net_amount: net_amount]
+    end
   end
 end
