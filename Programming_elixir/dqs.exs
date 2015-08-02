@@ -18,6 +18,9 @@ defmodule Dqs do
   def capitalize_sentences(s) do
     (for part <- String.split(s, ". "), do: String.capitalize(part)) |>
     Enum.join(". ")
-
+  end
+  def parse(csv) do
+    file = File.open!(csv)
+    for line <- IO.stream(file), do line
   end
 end
