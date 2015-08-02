@@ -15,4 +15,9 @@ defmodule Dqs do
         get_longest(t, lg)
     end
   end
+  def capitalize_sentences(s) do
+    for part <- String.split(s, ". "), do: String.capitalize(part) |>
+    List.join(". ")
+
+  end
 end
