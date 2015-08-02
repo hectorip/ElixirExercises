@@ -4,7 +4,8 @@ defmodule Dqs do
     print_l(list, lg)
   end
   def print_l([h|t], lg) when h != [] do
-    IO.puts String.just(h, lg)
+    l = String.length(h) + div(lg-String.length(h), 2)
+    IO.puts String.rjust(h, l)
     print_l(t, lg)
   end
   def get_longest([], lg), do: lg
