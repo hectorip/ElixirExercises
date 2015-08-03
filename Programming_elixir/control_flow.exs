@@ -1,8 +1,8 @@
 defmodule ControlFlow do
-  def FizzBuzz(up_to) do
+  def fizz_buzz(up_to) do
     for x <- 1..up_to do
       case x do
-        0 = rem(x,15) -> "FizzBuzz"
+        number = x when 0 == rem(number,15) -> "FizzBuzz"
       end
     end
   end
