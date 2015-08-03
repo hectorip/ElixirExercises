@@ -3,6 +3,7 @@ defmodule ControlFlow do
     for x <- 1..up_to do
       case x do
         number = x when 0 == rem(number,15) -> "FizzBuzz"
+        number = x -> number
       end
     end
   end
