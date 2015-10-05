@@ -7,6 +7,13 @@ defmodule Monitor1 do
   end
 
   def run do
-    "test"
+    res = spawn_monitor(Monitor1, :sad_method, [])
+    IO.puts inspect res
+    receive do
+      msg ->
+        IO.puts "MSG REECEIVED #{inspect msg}"
+    after 1000 ->
+      IO.puts "Nothing happened as far has I am concerned"
+    end
   end
 end
