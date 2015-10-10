@@ -4,14 +4,19 @@ defmodule MessageQueue do
     exit(:boom)
   end
 
+  def receiveMessages() do
+    receive do
+      msg ->
+        IO.puts msg
+        receiveMessages()
+    end
+  end
+
   def run() do
     pid = spawn_link(MessageQueue, :send_message, [])
     import :timer, only: [ sleep: 1 ]
     sleep 500
-    receive do
-      msg -> 
-       IO.puts msg
-    end
+    receiveMessages()
   end
 end
 
