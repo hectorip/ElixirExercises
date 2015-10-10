@@ -13,7 +13,7 @@ defmodule MessageQueue do
   end
 
   def run() do
-    pid = spawn_link(MessageQueue, :send_message, [])
+    pid = spawn_link(MessageQueue, :send_message, [this])
     import :timer, only: [ sleep: 1 ]
     sleep 500
     receiveMessages()
