@@ -7,13 +7,14 @@ defmodule MessageQueue do
   def receiveMessages() do
     receive do
       msg ->
-        IO.puts msg
+        IO.inspect msg
         receiveMessages()
     end
   end
 
   def run() do
-    pid = spawn_link(MessageQueue, :send_message, [this])
+    Process.flag(:trap_exit, true)
+    spawn_link(MessageQueue, :send_message, [self])
     import :timer, only: [ sleep: 1 ]
     sleep 500
     receiveMessages()
