@@ -17,17 +17,18 @@ defmodule MessageQueue do
   end
 
   def run(:exception) do
-    Process.flag(:trap_exit, true)
+    # Process.flag(:trap_exit, true)
     spawn_monitor(MessageQueue, :send_message_exception, [self])
     import :timer, only: [ sleep: 1 ]
     sleep 500
     receiveMessages()
   end
   def run() do
-    Process.flag(:trap_exit, true)
+    # Process.flag(:trap_exit, true)
     spawn_monitor(MessageQueue, :send_message, [self])
     import :timer, only: [ sleep: 1 ]
     sleep 500
     receiveMessages()
+  end
 end
 
