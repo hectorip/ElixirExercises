@@ -20,5 +20,5 @@ defmodule Parallel do
     |> Enum.map(fn (pid) ->
       receive do { _pid, result } -> result end
     end)
-  end
+  end # This will fail if the function has different response times
 end
