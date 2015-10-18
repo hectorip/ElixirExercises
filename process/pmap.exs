@@ -15,10 +15,10 @@ defmodule Parallel do
     me = self
     collection
     |> Enum.map(fn (elem) ->
-        spawn_link fn -> (send me, { self, fun.elem() }) end
+        spawn_link fn -> send me, { self, fun.(elem) } end
     end)
-    |> Enum.map(fn (pid) ->
-      receive do { _pid, result } -> result end
+    |> Enum.map(fn (_pid) ->
+      receive do { _, result } -> result end
     end)
   end # This will fail if the function has different response times
 end
