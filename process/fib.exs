@@ -32,7 +32,7 @@ defmodule Scheduler do
         schedule_processes(processes, tail, results)
       { :ready, pid } ->
         send pid, {:shutdown}
-        if length(processes > 1) do
+        if length(processes) > 1 do
           schedule_processes(List.delete(processes, pid), queue, results)
         else
           Enum.sort(results, fn {n1, _}, {n2,_} -> n1 <= n2 end)
