@@ -28,7 +28,7 @@ defmodule Scheduler do
     receive do
       { :ready, pid } when length(queue) > 0 ->
         [ next | tail ] = queue
-        send pid, {fib, next, self}
+        send pid, {:fib, next, self}
         schedule_processes(processes, tail, results)
       { :ready, pid } ->
         send pid, {:shutdown}
