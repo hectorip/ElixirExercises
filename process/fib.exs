@@ -45,12 +45,12 @@ defmodule Scheduler do
 end
 
 # I can see results as I increment the number of processes.
-to_calculate = [37,37,37,37, 37]
+to_calculate = [1,2,3,4,5,10, 20]
 Enum.each 1..15, fn n_processes ->
     {time, result} = :timer.tc(Scheduler, :run,[n_processes, FibSolver, :fib, to_calculate])
     if n_processes == 1 do
       IO.puts inspect result
       IO.puts "\n #    time (s)"
     end
-    :io.format "~2B    ~.2f~n", [n_processes, time/1000000.0]
+    :io.format "~2B    ~.2f~n", [n_processes, time*1.0]
 end
