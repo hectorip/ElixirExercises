@@ -2,6 +2,8 @@ defmodule GeneralServer do
 
   def worker(scheduler) do
     send scheduler, {:ready, self}
+    IO.puts "~n ready"
+    IO.inspect self
     receive do
       {:call, file, client} ->
         send client, {:answer, file, search_cat(file), self}
@@ -20,15 +22,18 @@ defmodule GeneralServer do
 end
 
 defmodule GeneralScheduler do
-  def run(arg) do
+  def run(arg, n_process) do
     files = (File.ls! arg) |> Enum.map(&(arg <> "/" <> &1))
     IO.inspect length(files)
-    (1..Enum.count files)
+    n_processes = ((n_process > 0) || (Enum.count files)) || n_process
+    IO.puts "PRocesses"
+    IO.puts n_processes
+    (1..n_processes)
     |> Enum.map(fn (_) -> spawn(GeneralServer, :worker, [self]) end)
     |> schedule_processes(files, 0)
   end
-  def run_timed(arg) do
-    {time, result} = :timer.tc(GeneralScheduler, :run, [arg])
+  def run_timed(arg, n_process \\ 0) do
+    {time, result} = :timer.tc(GeneralScheduler, :run, [arg, n_process])
     :io.format "~.2f~n", [time / 1000]
   end
 
@@ -43,7 +48,8 @@ defmodule GeneralScheduler do
         if length(processes) > 1 do
           schedule_processes(List.delete(processes, pid), to_process, res)
         else
-          res
+          IO.puts "RESULT"
+          IO.inspect res
         end
       {:answer, file, result, _pid} ->
         res = res + result
