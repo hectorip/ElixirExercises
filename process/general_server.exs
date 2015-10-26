@@ -27,6 +27,10 @@ defmodule GeneralScheduler do
     |> Enum.map(fn (_) -> spawn(GeneralServer, :worker, [self]) end)
     |> schedule_processes(files, 0)
   end
+  def run_timed(arg) do
+    {time, result} = :timer.tc(GeneralScheduler, :run, [arg])
+    :io.format "~.2f~n", [time / 1000]
+  end
 
   defp schedule_processes(processes, to_process,res) do
     receive do
