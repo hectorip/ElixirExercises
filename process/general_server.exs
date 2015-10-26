@@ -15,7 +15,7 @@ defmodule GeneralServer do
     # Here we will search for cat
     content = File.read! file
     #IO.inspect content
-    1
+    length(Regex.scan(~r/cat/iu,content))
   end
 end
 
@@ -43,8 +43,8 @@ defmodule GeneralScheduler do
         end
       {:answer, file, result, _pid} ->
         res = res + result
-        IO.puts result
-        IO.puts res
+        #IO.puts result
+        #IO.puts res
         schedule_processes(processes, to_process, res)
     end
   end
