@@ -21,7 +21,7 @@ end
 
 defmodule GeneralScheduler do
   def run(arg) do
-    files = File.ls! arg
+    files = (File.ls! arg) |> Enum.map(&(arg <> "/" <> &1))
     IO.inspect length(files)
     (1..Enum.count files)
     |> Enum.map(fn (_) -> spawn(GeneralServer, :worker, [self]) end)
