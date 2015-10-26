@@ -2,8 +2,8 @@ defmodule GeneralServer do
 
   def worker(scheduler) do
     send scheduler, {:ready, self}
-    IO.puts "~n ready"
-    IO.inspect self
+    #IO.puts "~n ready"
+    #IO.inspect self
     receive do
       {:call, file, client} ->
         send client, {:answer, file, search_cat(file), self}
@@ -25,7 +25,7 @@ defmodule GeneralScheduler do
   def run(arg, n_process) do
     files = (File.ls! arg) |> Enum.map(&(arg <> "/" <> &1))
     IO.inspect length(files)
-    n_processes = ((n_process > 0) || (Enum.count files)) || n_process
+    n_processes = ((n_process > 0) && n_process) || length(files)
     IO.puts "PRocesses"
     IO.puts n_processes
     (1..n_processes)
