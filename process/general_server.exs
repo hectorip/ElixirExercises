@@ -24,10 +24,7 @@ end
 defmodule GeneralScheduler do
   def run(arg, n_process) do
     files = (File.ls! arg) |> Enum.map(&(arg <> "/" <> &1))
-    IO.inspect length(files)
     n_processes = ((n_process > 0) && n_process) || length(files)
-    IO.puts "PRocesses"
-    IO.puts n_processes
     (1..n_processes)
     |> Enum.map(fn (_) -> spawn(GeneralServer, :worker, [self]) end)
     |> schedule_processes(files, 0)
@@ -48,13 +45,10 @@ defmodule GeneralScheduler do
         if length(processes) > 1 do
           schedule_processes(List.delete(processes, pid), to_process, res)
         else
-          IO.puts "RESULT"
           IO.inspect res
         end
       {:answer, file, result, _pid} ->
         res = res + result
-        #IO.puts result
-        #IO.puts res
         schedule_processes(processes, to_process, res)
     end
   end
