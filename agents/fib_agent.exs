@@ -9,7 +9,7 @@ defmodule FibAgent do
   end
 
   def do_fib(cache, n) do
-    if cached == cachep[n] do
+    if cached = cache[n] do
       {cached, cache}
     else
       {val, cache} = do_fib(cache, n-1)
@@ -19,3 +19,6 @@ defmodule FibAgent do
 
   end
 end
+
+{:ok, agent} = FibAgent.start_link()
+IO.puts FibAgent.fib(agent, 2000)
