@@ -1,4 +1,10 @@
+
+# Here :calendar is a module from Erlang(that's why is called as an atom)
+# We are asking for the local_time, which is a TIMESTAMP a tuple with
+# date and time, an each of those is a tuple.
+
 {date, time} = :calendar.local_time
+
 
 {year, month, day} = date
 
@@ -13,13 +19,16 @@ IO.puts "Second #{second}"
 
 
 # Reading a file
+# This will not match if the file coannot be opened
+# :ok will be replaced with :error, thus failing to match.
 
 {:ok, contents} = File.read("my_files.txt")
 
 IO.puts contents
 
 # Patterns
-
+# Ignoring date "_" is a special variable that matches
+# everything that is sent to it but does not store anything.
 {_, time} = :calendar.local_time
 
 IO.puts elem(time, 2)
@@ -33,7 +42,8 @@ IO.puts hour
 
 # Elixir will only bind a variable one time per bind
 [a, a] = [1, 1]
-#t this will not pass
+
+# this will not pass
 # [a, a] = [1, 2]
 
 # this will not fail
@@ -52,6 +62,9 @@ a = 2
 # Working with pin operator
 
 a = 2
+
+[^a, a] = [2,3]
+
 # This will fail, not because a is 2 but because it
 # was rebound and the third element was not equal
 
