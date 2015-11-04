@@ -1,9 +1,15 @@
+
+# common list
 prime_numbers = [1, 2, 3, 5, 7]
 
+# Getting the length of a list
 IO.puts length(prime_numbers)
 
+
+# Getting an element of a list
 IO.puts Enum.at(prime_numbers, 4)
 
+# Replacing the element 0 for 11
 List.replace_at(prime_numbers, 0, 11)
 
 # List.instert_at(prime_numbers, 0, 1)
