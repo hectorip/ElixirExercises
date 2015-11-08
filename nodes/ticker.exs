@@ -9,20 +9,38 @@ defmodule Ticker do
   end
 
   def register(client_pid) do
-    send :global.whereid_name(@name), { :register, client_pid }
+    IO.puts "requested"
+    send :global.whereis_name(@name), { :register, client_pid }
   end
 
-  def genertator(clients) do
+  def generator(clients) do
      receive do
-       { :receive, pid } ->
+       { :register, pid } ->
          IO.puts "registering #{inspect pid}"
          generator([pid|clients])
      after
        @interval ->
+         IO.puts "tick"
          Enum.each clients, fn client ->
            send client, { :tick }
          end
          generator(clients)
      end
+  end
+end
+
+defmodule Client do
+
+  def start do
+    pid = spawn(__MODULE__, :receiver, [])
+    Ticker.register(pid)
+  end
+
+  def receiver() do
+    receive do
+      { :tick } ->
+        IO.puts "tick received"
+        receiver
+    end
   end
 end
