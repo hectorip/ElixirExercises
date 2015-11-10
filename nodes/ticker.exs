@@ -18,7 +18,7 @@ defmodule Ticker do
        { :register, pid } ->
          IO.puts "registering #{inspect pid}"
          generator([pid|clients])
-     after
+     after  # This will reset when this server receives a register request
        @interval ->
          IO.puts "tick"
          Enum.each clients, fn client ->
