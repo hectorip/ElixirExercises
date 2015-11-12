@@ -20,12 +20,12 @@ defmodule Ticker do
          generator([pid|clients], to)
      after  # This will reset when this server receives a register request
        @interval ->
-         IO.puts "tick"
         
          to = (length(clients) <= to) && 0 ||  to
          c = Enum.at clients, to, :nil
          if c do
-          send c, { :tick }
+          send c, { :tick, "#{to}" }
+          IO.puts "tick to #{to}"
          else
            to = -1
          end
@@ -43,8 +43,8 @@ defmodule Client do
 
   def receiver() do
     receive do
-      { :tick } ->
-        IO.puts "tick received"
+      { :tick, order } ->
+        IO.puts "tick received as #{order}"
         receiver
     end
   end
