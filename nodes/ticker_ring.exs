@@ -43,8 +43,4 @@ defmodule Client do
         end
     end
   end
-  def register(client_pid) do
-    IO.puts "Registering #{client_pid}"
-    send @last, { :register, client_pid}
-  end
 end
