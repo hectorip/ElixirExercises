@@ -29,11 +29,11 @@ defmodule Client do
     pid = spawn(__MODULE__, :get_up, [nil, 0])
     Orchestrator.register(pid)
   end
-  
-  def get_up(next, n) do
+
+  def get_up(next, id) do
     receive do
-      {:register, pid, nr} ->
-        get_up(pid, nr)
+      {:register, pid, assigned_id} ->
+        get_up(pid, assigned_id)
       {:tick, pid} ->
         IO.puts "tick received from #{pid}"
         receive do
