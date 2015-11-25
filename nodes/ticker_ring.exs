@@ -16,6 +16,7 @@ defmodule Orchestrator do
   def listener(ring) do
     receive do
       { :register, pid } ->
+
         if List.first ring do
           send (List.first ring), { :register, pid, (length ring) }
           send pid, { :register, (List.last ring),  (length ring) + 1 }
@@ -38,9 +39,13 @@ defmodule Ticker do
   def get_up(next, id) do
     receive do
       { :register, pid, assigned_id } ->
+
         get_up(pid, assigned_id)
+
       { :tick, id } ->
+
         IO.puts "Tick received from #{id}"
+
         receive do
         after 2000 ->
           send next, {:tick, id}
