@@ -16,7 +16,7 @@ defmodule Orchestrator do
           send (List.first ring), {:register, pid, (length ring) }
           send pid, {:register, (List.last ring),  (length ring) + 1 }
         else
-          send pid, {:register, pid, 0}
+          send pid, {:register, pid, 1}
           send pid, {:tick, 0}
         end
         IO.puts "Registering in ring"
@@ -34,12 +34,12 @@ defmodule Client do
     receive do
       {:register, pid, assigned_id} ->
         get_up(pid, assigned_id)
-      {:tick, pid} ->
-        IO.puts "tick received from #{pid}"
+      {:tick, id} ->
+        IO.puts "Tick received from #{id}"
         receive do
         after 2000 ->
-          send next, {:tick, n}
-          get_up(next,n)
+          send next, {:tick, id}
+          get_up(next, id)
         end
     end
   end
