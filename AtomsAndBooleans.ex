@@ -1,3 +1,5 @@
+
+# true and false are atoms, words "true" and "false" are only conventions
 :true == true
 :false == false
 
@@ -7,7 +9,8 @@ IO.puts not false
 
 #more exaples in atoms
 
-:"hello thi is a a valid atom"
+# atoms can be Strings
+:"hello this is a a valid atom"
 
 :"this_too"
 
