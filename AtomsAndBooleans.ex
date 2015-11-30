@@ -9,7 +9,8 @@ IO.puts not false
 
 #more exaples in atoms
 
-# atoms can be Strings
+# atoms can be Strings, mostly when they contain 
+# not valid characters, like spaces
 :"hello this is a a valid atom"
 
 :"this_too"
