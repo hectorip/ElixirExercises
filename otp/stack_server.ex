@@ -5,7 +5,7 @@ defmodule StackServer do
     #  { :reply, :ok, elements }
   # end
   def handle_call(:pop, _client, []) do
-    {:empty_stack, nil , []}
+    {:reply, nil , []}
   end
   def handle_call(:pop, _client, [next|rest]) do
     {:reply, next, rest}
