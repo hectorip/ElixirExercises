@@ -15,6 +15,7 @@ defmodule SequenceServer do
 
   def run_with_debug(initial_state) do
     GenServer.start_link(__MODULE__, initial_state, [debug: [:trace, :statistics]])
+    # statistics can be checked with :sys.statistics pid, :get
   end
 end
 
