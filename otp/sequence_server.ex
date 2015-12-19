@@ -9,7 +9,7 @@ defmodule SequenceServer do
     { :noreply, current_number + delta }
   end
 
-  def handle_cast({:decrement_njumber, delta}, current_number) do
+  def handle_cast({:decrement_number, delta}, current_number) do
     { :noreply, current_number - delta } # returns only :noreply and the state of the server
   end
 
