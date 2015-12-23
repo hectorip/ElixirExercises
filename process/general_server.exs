@@ -2,8 +2,6 @@ defmodule GeneralServer do
 
   def worker(scheduler) do
     send scheduler, {:ready, self}
-    #IO.puts "~n ready"
-    #IO.inspect self
     receive do
       {:call, file, client} ->
         send client, {:answer, file, search_cat(file), self}
@@ -16,7 +14,6 @@ defmodule GeneralServer do
   defp search_cat(file) do
     # Here we will search for cat
     content = File.read! file
-    #IO.inspect content
     length(Regex.scan(~r/cat/iu,content))
   end
 end
