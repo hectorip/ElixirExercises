@@ -1,9 +1,6 @@
 defmodule StackServer do
   use GenServer
 
-  # def handle_call(:init, elements, _) do
-    #  { :reply, :ok, elements }
-  # end
   def handle_call(:pop, _client, []) do
     {:reply, nil , []}
   end
