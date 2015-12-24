@@ -20,7 +20,6 @@ defmodule Ticker do
          generator([pid|clients], to)
      after  # This will reset when this server receives a register request
        @interval ->
-        
          to = (length(clients) <= to) && 0 ||  to
          c = Enum.at clients, to, :nil
          if c do

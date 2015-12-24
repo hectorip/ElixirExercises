@@ -1,3 +1,5 @@
+# First teaser of Agents, extracted from Programming Elixir book
+
 defmodule FibAgent do
   def start_link do
     cache = Enum.into([{0,0}, {1,1}], HashDict.new)
