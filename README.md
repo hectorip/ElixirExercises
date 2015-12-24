@@ -6,5 +6,5 @@ be documenting the exercises to enable other people understand what I've
 understood.
 
 # Advice
-- The first and foremost advice I have is: write yourself everuthing
+- The first and foremost advice I have is: write yourself everything
 
