@@ -1,4 +1,4 @@
-# ErlangExercises
+# Elixir Exercises
 I'm taking a course about Elixir and here are the exercises as I'm completing it.
 
 Now that I've learnt a lot about Elixir, and its difference with erlang, I will
