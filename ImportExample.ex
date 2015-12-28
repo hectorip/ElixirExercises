@@ -6,6 +6,8 @@ defmodule ImportExample do:
   end
 
   def f2 do
+    # Once you have imported a module, you have all the functions it has
+    # available to your use
     flatten [1,[3,5],[7,8]]
   end
 

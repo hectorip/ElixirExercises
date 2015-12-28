@@ -1,5 +1,5 @@
 defmodule TestNum do
-  
+
   # The function is the same but in only runs whe the
   # condition is true
   def test(x) when x < 0 do
