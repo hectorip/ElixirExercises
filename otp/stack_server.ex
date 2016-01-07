@@ -1,6 +1,7 @@
 defmodule StackServer do
   use GenServer
-
+  def start_link(state)
+end
   def handle_call(:pop, _client, []) do
     {:reply, nil , []}
   end
