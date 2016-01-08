@@ -6,8 +6,8 @@ defmodule StackServer do
   def pop() do
     GenServer.call(:stack_server, :pop)
   end
-  def push() do
-    GenServer.cast(:stack_server, :push)
+  def push(element) do
+    GenServer.cast(:stack_server, {:push, element})
   end
   def handle_call(:pop, _client, []) do
     {:reply, nil , []}
