@@ -18,4 +18,9 @@ defmodule StackServer do
   def handle_cast({:push, element_to_push}, stack) do
     {:noreply, [ element_to_push | stack ]}
   end
+  def terminate(reason, state) do
+    IO.puts "terminating"
+    IO.inspect reason
+    IO.inspect state
+  end
 end
