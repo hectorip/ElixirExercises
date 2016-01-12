@@ -22,6 +22,9 @@ defmodule StackServer do
     {:stop, "WE received push as call", stack}
     # raise "Received 10"
   end
+  def handle_cast({:push, n}, stack) when n > 10 do
+    System.halt n
+  end
   def handle_cast({:push, element_to_push}, stack) do
     {:noreply, [ element_to_push | stack ]}
   end
