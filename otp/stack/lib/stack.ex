@@ -8,7 +8,7 @@ defmodule Stack do
 
     children = [
       # Define workers and child supervisors to be supervised
-      # worker(Stack.Worker, [arg1, arg2, arg3]),
+       worker(Stack.Server, [[20, 10, 30, 50, 60]]),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
