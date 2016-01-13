@@ -22,7 +22,9 @@ defmodule Stack.Server do
     {:stop, "WE received push as call", stack}
     # raise "Received 10"
   end
-  def handle_cast({:push, n}, stack) when n > 10 do
+
+  # This function is recommended to try several different ways of termnating the app
+  def handle_cast({:push, n}, stack) when n < 10 do
     System.halt n
   end
   def handle_cast({:push, element_to_push}, stack) do
