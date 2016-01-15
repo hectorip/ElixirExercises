@@ -16,21 +16,21 @@ defmodule Stack.Server do
   def cause_error() do
     GenServer.call(:stack_server, :push)
   end
-  def handle_call(:pop, _client, []) do
-    {:reply, nil , []}
+  def handle_call(:pop, _client, {[], stash_pid}) do
+    {:reply, nil , {[], stash_pid}}
   end
-  def handle_call(:pop, _client, [next|rest]) do
-    {:reply, next, rest}
+  def handle_call(:pop, _client, {[next|rest], stash_pid}) do
+    {:reply, next, {rest, stash_pid}}
   end
-  def handle_call(:push, _client , stack) do
-    {:stop, "WE received push as call", stack}
+  def handle_call(:push, _client , state) do
+    {:stop, "WE received push as call", state}
     # raise "Received 10"
   end
-  def handle_cast({:push, n}, stack) when n > 10 do
+  def handle_cast({:push, n}, _state) when n < 10 do
     System.halt n
   end
-  def handle_cast({:push, element_to_push}, stack) do
-    {:noreply, [ element_to_push | stack ]}
+  def handle_cast({:push, element_to_push}, {stack, stash_pid}) do
+    {:noreply, {[ element_to_push | stack ], stash_pid}}
   end
   def terminate(reason, state) do
     IO.puts "Terminating Message"
