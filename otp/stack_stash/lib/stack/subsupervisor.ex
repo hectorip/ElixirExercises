@@ -3,4 +3,8 @@ defmodule Stack.SubSupervisor do
   def start_link(stash_pid) do
     {ok, _pid} = Supervisor.start_child(__MODULE__, stash_pid)
   end
+  def init(stash_pid) do
+    child_processes = [ worker(Stack.Server, [stash_pid]) ]
+    supervise child_processes, strategy: :one_for_one
+  end
 end

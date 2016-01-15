@@ -1,6 +1,6 @@
 defmodule Stack.Server do
   use GenServer
-  def start_link(state) do
+  def start_link(stash_pid) do
     GenServer.start_link(__MODULE__, state, name: :stack_server)
   end
   def pop() do

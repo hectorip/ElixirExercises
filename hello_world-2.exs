@@ -4,4 +4,5 @@ defmodule Hello do
     end
 end
 
+# Note that functions can be used without parentheses
 Hello.world
