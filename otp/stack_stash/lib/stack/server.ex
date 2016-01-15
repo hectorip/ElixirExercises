@@ -32,10 +32,11 @@ defmodule Stack.Server do
   def handle_cast({:push, element_to_push}, {stack, stash_pid}) do
     {:noreply, {[ element_to_push | stack ], stash_pid}}
   end
-  def terminate(reason, state) do
+  def terminate(reason, {stack, stash_pid}) do
     IO.puts "Terminating Message"
     IO.inspect reason
     IO.inspect state
+    Stack.Stash.set_state stash_pid, stack
     :ok
   end
 end
