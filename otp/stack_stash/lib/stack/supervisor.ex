@@ -1,4 +1,4 @@
-def Stack.Supervisor do
+defmodule Stack.Supervisor do
   use Supervisor
 
   def start_link(initial_stack) do

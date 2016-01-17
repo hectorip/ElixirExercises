@@ -7,7 +7,7 @@ defmodule Stack.Stash do
     GenServer.call pid, :get_value
   end
   def set_value(pid, value) do
-    Genserver.cast pid, {:save_value, value}
+    GenServer.cast pid, {:save_value, value}
   end
 
   #GenServer Implementation

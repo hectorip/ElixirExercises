@@ -35,7 +35,7 @@ defmodule Stack.Server do
   def terminate(reason, {stack, stash_pid}) do
     IO.puts "Terminating Message"
     IO.inspect reason
-    IO.inspect state
+    IO.inspect stack
     Stack.Stash.set_state stash_pid, stack
     :ok
   end
