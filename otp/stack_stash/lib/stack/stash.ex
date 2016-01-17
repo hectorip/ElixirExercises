@@ -10,7 +10,7 @@ defmodule Stack.Stash do
     Genserver.cast pid, {:save_value, value}
   end
 
-  #GenServer Impl
+  #GenServer Implementation
 
   def init(initial_state) do
     {:ok, initial_state}
