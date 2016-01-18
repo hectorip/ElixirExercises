@@ -15,7 +15,8 @@ defmodule StackStash.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     [applications: [:logger],
-     mod: {StackStash, [1, 2, 4, 6, 10, 25]},
+     mod: {StackStash, []},
+     env: [initial_stack: [1, 6, 199, "fourth"]] ,
      registered: [Stack.Server]
    ]
   end
