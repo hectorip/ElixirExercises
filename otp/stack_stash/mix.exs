@@ -15,7 +15,7 @@ defmodule StackStash.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     [applications: [:logger],
-     mod: {StackStash, []}]
+     mod: {StackStash, [1, 2, 4, 6, 10, 25]}]
   end
 
   # Dependencies can be Hex packages:
