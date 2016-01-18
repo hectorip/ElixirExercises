@@ -18,7 +18,7 @@ defmodule Stack.Stash do
     {:ok, initial_state}
   end
   def handle_call(:get_value, _client, state) do
-    {:reply, state}
+    {:reply, state, state}
   end
   def handle_cast({:save_value, new_value}, _state) do
     {:noreply, new_value}

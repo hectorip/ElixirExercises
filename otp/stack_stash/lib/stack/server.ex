@@ -36,7 +36,7 @@ defmodule Stack.Server do
     IO.puts "Terminating Message"
     IO.inspect reason
     IO.inspect stack
-    Stack.Stash.set_state stash_pid, stack
+    Stack.Stash.set_value stash_pid, stack
     :ok
   end
 end
