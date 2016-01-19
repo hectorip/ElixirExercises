@@ -8,4 +8,13 @@ defmodule StackStashTest do
     assert Stack.Server.pop == 199
     assert Stack.Server.pop == "fourth"
   end
+
+  test "Stack push-pop works" do
+    assert Stack.Server.push 100
+    assert Stack.Server.pop == 100
+  end
+
+  test "Stack pop on empty" do
+    assert Stack.Server.pop == nil
+  end
 end
