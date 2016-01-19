@@ -17,4 +17,10 @@ defmodule StackStashTest do
   test "Stack pop on empty" do
     assert Stack.Server.pop == nil
   end
+
+  test "Stack does not stop working after failure" do
+    Stack.Server.push 5
+    Stack.Server.cause_error
+    assert Stack.Server.pop == 5
+  end
 end
