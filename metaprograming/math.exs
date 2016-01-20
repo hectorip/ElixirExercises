@@ -15,5 +15,4 @@ defmodule Math do
       IO.puts "#{lhs} times #{rhs} is #{result}"
     end
   end
-  
 end
