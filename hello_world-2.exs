@@ -1,5 +1,6 @@
 defmodule Hello do
-    def world do
+  # Named functions can only exist inside modules.
+  def world do
         IO.puts "Hello World"
     end
 end

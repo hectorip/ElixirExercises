@@ -1,6 +1,7 @@
 defmodule ImportExample do:
+  # Import a module is not necesary to use its functions
   import List
-
+  
   def f1 do
      List.flatten [1,[1,2],4]
   end
