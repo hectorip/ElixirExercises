@@ -1,4 +1,5 @@
-
+# How could you explain what atoms are?
+# Atoms are like constants whose value is its name
 # true and false are atoms, words "true" and "false" are only conventions
 :true == true
 :false == false
