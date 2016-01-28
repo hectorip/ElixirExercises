@@ -1,5 +1,7 @@
 defmodule ImportExample do:
-  # Import a module is not necesary to use its functions
+  # Import a module is not necesary to use its functions you could use
+  # them by calling the complete name like `List.flatten` but if you import
+  # the module you can use it without the module name, like `flatten`
   import List
   
   def f1 do
