@@ -4,7 +4,7 @@
 # We are using the current timestamp as a unique number because it
 # can be considered as unique number in an application that has only one
 # process, if we have more processes, in order to avoid number
-# repeitition, we need to look for another unique number to seed.
+# repetition, we need to look for another unique number to seed.
 
 :random.seed(:os.timestamp)
 
