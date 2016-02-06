@@ -1,3 +1,5 @@
+# The quoting of primitives will return the primitives themselves
+
 quote do: :atom
 
 quote do: 123
