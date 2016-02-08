@@ -13,3 +13,9 @@ quote do: "String"
 quote do: {:ok, 1}
 
 quote do:  {:ok, [1,2,3]}
+
+
+# this will not ve primitives
+
+quote do: %{a: 1, b: 2}
+quote do: Enum
