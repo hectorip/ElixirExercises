@@ -16,6 +16,8 @@ defmodule Stack.Server do
   def cause_error() do
     GenServer.call(:stack_server, :push)
   end
+
+
   def handle_call(:pop, _client, {[], stash_pid}) do
     {:reply, nil , {[], stash_pid}}
   end
@@ -39,5 +41,6 @@ defmodule Stack.Server do
     Stack.Stash.set_value stash_pid, stack
     :ok
   end
+  
 end
 

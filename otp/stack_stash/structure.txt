@@ -1,0 +1,8 @@
+Sup
+ |-------------|
+stash        subsupervisor (stash)
+ |             |
+ |-----------server
+                |
+                |
+              \o/
