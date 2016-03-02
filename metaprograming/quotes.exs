@@ -19,3 +19,5 @@ quote do: (5 + 2) - 1 + 7
 
 quote do: %{a: 1, b: 2}
 quote do: Enum
+
+quote do: {1, 2, 3, 4}
