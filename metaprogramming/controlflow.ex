@@ -8,3 +8,14 @@ defmodule ControlFlow do
   end
 end
 
+
+defmodule UsingUnless do
+  require ControlFlow
+
+  def doSomething do
+    unless(false) do
+      IO.puts "works"
+    end
+  end
+
+end
