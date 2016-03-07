@@ -1,4 +1,5 @@
 # Regexp
+# how to generate regexp's and running it
 
 matches = Regex.run ~r{[aeiou]}, "Murcielago"
 
