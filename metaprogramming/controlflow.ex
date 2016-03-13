@@ -20,5 +20,4 @@ defmodule UsingUnless do
       IO.puts "works"
     end
   end
-
 end
