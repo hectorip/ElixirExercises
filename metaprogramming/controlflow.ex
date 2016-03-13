@@ -1,4 +1,7 @@
 # 'quote' and 'unquote' are like string interpolation in AST
+# 'unquote' is like delaying code execution
+# 'quote' is requesting the internal representation of the code
+# inside the do clause
 
 defmodule ControlFlow do
   defmacro unless(expression, do: block) do
