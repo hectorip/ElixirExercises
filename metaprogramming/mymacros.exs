@@ -29,15 +29,19 @@ defmodule Test do
   use Macros
 
   def test_if do
-    Macros.if 1==2 do:
-    
-    else:
-
+    Macros.if 1==2 do
+      IO.puts "1==2"
+    else
+      IO.puts "1 != 2"
     end
   end
 
   def test_unless do
-    
+    Macros.unless False do
+      IO.puts "Unless is working!"
+    else
+      IO.puts "If this is printed, unless does not work"
+    end
   end
 
 end
