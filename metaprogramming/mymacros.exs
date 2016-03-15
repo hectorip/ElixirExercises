@@ -21,3 +21,16 @@ defmodule Macros do
   end
 
 end
+
+defmodule Test do
+  use Macros
+
+  def test_if do
+
+  end
+
+  def test_unless do
+    
+  end
+
+end
