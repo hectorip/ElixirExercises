@@ -1,4 +1,6 @@
 defmodule My do
+
+  # This function would never work as intended
   def myif(condition, clauses) do
     do_clause = Keyword.get(clauses, :do, nil)
     else_clause = Keyword.get(clauses, :else, nil)
