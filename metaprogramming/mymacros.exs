@@ -1,3 +1,5 @@
+
+
 defmodule Macros do
   defmacro if(condition, clauses) do
     do_clause = Keyword.get(clauses, :do, nil)
@@ -23,10 +25,15 @@ defmodule Macros do
 end
 
 defmodule Test do
+  # Macros should be imported before using it always
   use Macros
 
   def test_if do
+    Macros.if 1==2 do:
+    
+    else:
 
+    end
   end
 
   def test_unless do
