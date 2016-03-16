@@ -25,7 +25,7 @@ defmodule Macros do
 end
 
 defmodule Test do
-  # Macros should be imported before using it always
+  # Macros should be imported before using it, always
   require Macros
 
   def test_if do
