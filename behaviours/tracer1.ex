@@ -4,7 +4,7 @@ defmodule Tracer do
     quote do: {}
   end
 end
-i
+
 defmodule Test do
   import Kernel, except: [def: 2]
   import Tracer, only:   [def: 2]
