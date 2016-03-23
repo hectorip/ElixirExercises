@@ -1,5 +1,9 @@
 defmodule Tracer do
-  
+  defmacro def(definition, code) do
+    quote do
+      
+    end
+  end
 end
 
 defmodule Test do
