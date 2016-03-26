@@ -15,7 +15,5 @@ end
 
 defmodule Test do
   require Mod
-  def test do
-    Mod.definfo
-  end
+  Mod.definfo
 end
