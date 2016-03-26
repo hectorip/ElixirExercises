@@ -16,7 +16,7 @@ defmodule UsingUnless do
   require ControlFlow
 
   def doSomething do
-    unless(false) do
+    ControlFlow.unless(false) do
       IO.puts "works"
     end
   end
