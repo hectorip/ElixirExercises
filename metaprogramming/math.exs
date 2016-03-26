@@ -1,5 +1,5 @@
 defmodule Math do
-  # Modules that have Macros need to to be imported with the kerword 'use'
+  # Modules that have Macros need to to be imported with the keyword 'require'
   defmacro say({:+, _, [lhs, rhs]}) do
     quote do
       lhs = unquote(lhs)
