@@ -3,7 +3,7 @@ defmodule Controls do
 
   defmacro while(condition, code) do
     quote do
-      for _ in Stream.cycle([:ok]) do
+      for _ <- Stream.cycle([:ok]) do
         if unquote(condition) do
           unquote(code)
         end 
