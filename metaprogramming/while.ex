@@ -17,5 +17,11 @@ defmodule Controls do
     end
   end
 
+  defmacro break do
+    quote do
+      throw :break
+    end
+  end
+
 
 end
