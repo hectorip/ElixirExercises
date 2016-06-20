@@ -20,7 +20,7 @@ end
 
 
 # Expected:
-# 
+#
 # ..
 # FAILURE:
 # Expected 10
