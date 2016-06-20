@@ -2,11 +2,11 @@ defmodule Debugger do
   # Here, the function or the code being unquoted two times is wrong
   defmacro log(expression) do
     if Application.get_env(:debugger, :log_level) == :debug do
-      quote do
+      quote bind_quoted: [expression: expression] do
         IO.puts "***********************************"
-        IO.inspect unquote(expression)
+        IO.inspect expression
         IO.puts "***********************************"
-        unquote(expression)
+        expression
       end
     else
       expression
