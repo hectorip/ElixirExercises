@@ -1,15 +1,15 @@
 defmodule Testing do
 
   # asserting like in exunit
-  defmacro assert do
-    
+  defmacro assert([operator, [], arguments]) do
+
   end
 
 end
 
 
 defmodule Test do
-  require Assertion
+  require Testing
 
   def run do
     assert 5 == 5
