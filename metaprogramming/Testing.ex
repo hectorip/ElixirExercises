@@ -1,8 +1,8 @@
 defmodule Testing do
 
   # asserting like in exunit
-  defmacro assert([operator, [], arguments]) do
-
+  defmacro assert({operator, _context, [lhs, rhs]}) do
+    
   end
 
 end
