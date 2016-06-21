@@ -10,15 +10,15 @@ defmodule Assertion do
 end
 
 #
-# defmodule Test do
-#   require Assertion
-#
-#   def run do
-#     assert 5 == 5
-#     assert 2 > 0
-#     assert 10 < 1
-#   end
-# end
+defmodule Test do
+  import Assertion
+
+  def run do
+    assert 5 == 5
+    assert 2 > 0
+    assert 10 < 1
+  end
+end
 
 defmodule Assertion.Test do
   def assert(:==, lhs, rhs )  when lhs == rhs, do: IO.puts "."
