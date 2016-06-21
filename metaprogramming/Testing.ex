@@ -31,6 +31,26 @@ defmodule Assertion.Test do
     """
   end
 
+  def assert(:>, lhs, rhs )  when lhs > rhs, do: IO.puts "."
+
+  def assert(:>, lhs, rhs) do
+    IO.puts """
+    FAILURE:
+      Expected: #{lhs}
+      to be greater than: #{rhs}
+    """
+  end
+
+  def assert(:>=, lhs, rhs )  when lhs >= rhs, do: IO.puts "."
+
+  def assert(:>=, lhs, rhs) do
+    IO.puts """
+    FAILURE:
+      Expected: #{lhs}
+      to be greater than or equal to: #{rhs}
+    """
+  end
+
 end
 
 # Expected:
