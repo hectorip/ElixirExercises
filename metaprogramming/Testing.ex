@@ -15,12 +15,15 @@ defmodule Test do
 
   def run do
     assert 5 == 5
-    assert 2 == 0
-    assert 10 == 1
+    assert 2 > 0
+    assert 2 < 0
+    assert 10 > 1
+    assert 10 <= 1
   end
 end
 
 defmodule Assertion.Test do
+
   def assert(:==, lhs, rhs )  when lhs == rhs, do: IO.puts "."
 
   def assert(:==, lhs, rhs) do
@@ -51,7 +54,7 @@ defmodule Assertion.Test do
     """
   end
 
-  def assert(:<, lhs, rhs )  when lhs > rhs, do: IO.puts "."
+  def assert(:<, lhs, rhs )  when lhs < rhs, do: IO.puts "."
 
   def assert(:<, lhs, rhs) do
     IO.puts """
@@ -61,7 +64,7 @@ defmodule Assertion.Test do
     """
   end
 
-  def assert(:<=, lhs, rhs )  when lhs >= rhs, do: IO.puts "."
+  def assert(:<=, lhs, rhs )  when lhs <= rhs, do: IO.puts "."
 
   def assert(:<=, lhs, rhs) do
     IO.puts """
