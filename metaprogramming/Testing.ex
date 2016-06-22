@@ -1,4 +1,11 @@
 defmodule Assertion do
+  # Expected Result:
+  #
+  # ..
+  # FAILURE:
+  # Expected 10
+  # to be lees than: 1
+
 
   # asserting like in exunit
   defmacro assert({operator, _context, [lhs, rhs]}) do
@@ -76,9 +83,24 @@ defmodule Assertion.Test do
 
 end
 
-# Expected:
-#
-# ..
-# FAILURE:
-# Expected 10
-# to be lees than: 1
+defmodule MathTest do
+
+  use Assertion
+
+  test "Integers can be added and substracted" do
+
+    assert 5 + 5 == 10
+    assert 8 - 10 == -2
+    assert 5 - 5 == 10
+
+  end
+
+  test "Integers can be multiplied an divided" do
+
+    assert 5 / 5 == 1
+    assert 5 * 5 == 25
+    assert 7 * 9 == 36
+
+  end
+
+end
