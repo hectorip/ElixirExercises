@@ -21,11 +21,20 @@ defmodule Assertion do
   defmacro __using__(_options) do
     quote do
       import unquote(__MODULE__)
+      Module.register_attribute __MODULE__, :tests, accumulate: true
       IO.inspect unquote(__MODULE__) # just to get out of doubt
 
       def run do
-        IO.puts "Running tests..."
+        IO.puts "Running tests... (#{inspect @tests})"
       end
+    end
+  end
+
+  defmacro test(description, do: test_block) do
+    test_function = String.to_atom(description)
+    quote do
+        @tests {unquote(test_function), unquote(description)}
+        def unquote(test_function)(), do: unquote(test_block)
     end
   end
 
