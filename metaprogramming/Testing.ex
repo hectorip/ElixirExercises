@@ -7,8 +7,7 @@ defmodule Assertion do
   # to be lees than: 1
 
   # asserting like in exunit
-
-  defmacro extend(options \\ []) do
+  defmacro extend(_options \\ []) do
     quote do
       import unquote(__MODULE__)
 
@@ -19,7 +18,7 @@ defmodule Assertion do
     end
   end
 
-  def __using__(_options) do
+  defmacro __using__(_options) do
     quote do
       import unquote(__MODULE__)
       IO.inspect unquote(__MODULE__) # just to get out of doubt
@@ -27,7 +26,6 @@ defmodule Assertion do
       def run do
         IO.puts "Running tests..."
       end
-
     end
   end
 
@@ -110,20 +108,25 @@ defmodule MathTest do
 
   use Assertion
 
-  test "Integers can be added and substracted" do
-
-    assert 5 + 5 == 10
-    assert 8 - 10 == -2
-    assert 5 - 5 == 10
-
-  end
-
-  test "Integers can be multiplied an divided" do
-
-    assert 5 / 5 == 1
-    assert 5 * 5 == 25
-    assert 7 * 9 == 36
-
-  end
+  # test "Integers can be added and substracted" do
+  #
+  #   assert 5 + 5 == 10
+  #   assert 8 - 10 == -2
+  #   assert 5 - 5 == 10
+  #
+  # end
+  #
+  # test "Integers can be multiplied an divided" do
+  #
+  #   assert 5 / 5 == 1
+  #   assert 5 * 5 == 25
+  #   assert 7 * 9 == 36
+  #
+  # end
 
 end
+
+
+# defmodule MathTest do
+#   use Assertion
+# end
