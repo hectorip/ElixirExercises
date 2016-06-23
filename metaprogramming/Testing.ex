@@ -6,8 +6,21 @@ defmodule Assertion do
   # Expected 10
   # to be lees than: 1
 
-
   # asserting like in exunit
+
+  defmacro extend(options \\ []) do
+    quote do
+      import unquote(__MODULE__)
+
+      def run do
+        # stubed metod
+        IO.puts "Trying to run test..."
+      end
+
+    end
+
+  end
+
   defmacro assert({operator, _context, [lhs, rhs]}) do
     quote bind_quoted: [lhs: lhs, rhs: rhs, operator: operator] do
       Assertion.Test.assert(operator, lhs, rhs)
