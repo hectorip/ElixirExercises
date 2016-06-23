@@ -16,9 +16,19 @@ defmodule Assertion do
         # stubed metod
         IO.puts "Trying to run test..."
       end
+    end
+  end
+
+  def __using__(_options) do
+    quote do
+      import unquote(__MODULE__)
+      IO.inspect unquote(__MODULE__) # just to get out of doubt
+
+      def run do
+        IO.puts "Running tests..."
+      end
 
     end
-
   end
 
   defmacro assert({operator, _context, [lhs, rhs]}) do
