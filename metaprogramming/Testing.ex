@@ -80,54 +80,49 @@ defmodule Assertion.Test do
     end
   end
 
-  def assert(:==, lhs, rhs )  when lhs == rhs, do: IO.puts "."
+  def assert(:==, lhs, rhs )  when lhs == rhs, do: :ok
 
   def assert(:==, lhs, rhs) do
-    IO.puts """
-    FAILURE:
+    {:fail, """
       Expected: #{lhs}
       to be equal to: #{rhs}
-    """
+    """}
   end
 
-  def assert(:>, lhs, rhs )  when lhs > rhs, do: IO.puts "."
+  def assert(:>, lhs, rhs )  when lhs > rhs, do: :ok
 
   def assert(:>, lhs, rhs) do
-    IO.puts """
-    FAILURE:
+    {:fail, """
       Expected: #{lhs}
       to be greater than: #{rhs}
-    """
+    """}
   end
 
-  def assert(:>=, lhs, rhs )  when lhs >= rhs, do: IO.puts "."
+  def assert(:>=, lhs, rhs )  when lhs >= rhs, do: :ok
 
   def assert(:>=, lhs, rhs) do
-    IO.puts """
-    FAILURE:
+    {:fail, """
       Expected: #{lhs}
       to be greater than or equal to: #{rhs}
-    """
+    """}
   end
 
-  def assert(:<, lhs, rhs )  when lhs < rhs, do: IO.puts "."
+  def assert(:<, lhs, rhs )  when lhs < rhs, do: :ok
 
   def assert(:<, lhs, rhs) do
-    IO.puts """
-    FAILURE:
+    {:fail, """
       Expected: #{lhs}
       to be lesser than: #{rhs}
-    """
+    """}
   end
 
-  def assert(:<=, lhs, rhs )  when lhs <= rhs, do: IO.puts "."
+  def assert(:<=, lhs, rhs )  when lhs <= rhs, do: :ok
 
   def assert(:<=, lhs, rhs) do
-    IO.puts """
-    FAILURE:
+    {:fail, """
       Expected: #{lhs}
       to be lesser than or equal to: #{rhs}
-    """
+    """}
   end
 
 end
