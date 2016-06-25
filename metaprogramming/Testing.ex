@@ -22,9 +22,15 @@ defmodule Assertion do
       import unquote(__MODULE__)
       Module.register_attribute __MODULE__, :tests, accumulate: true
       IO.inspect unquote(__MODULE__) # just to get out of doubt
+      @before_compile unquote(__MODULE__)
 
+    end
+  end
+  defmacro __before_compile__(_env) do
+    quote do
       def run do
         IO.puts "Running tests... (#{inspect @tests})"
+        Assertion.Test.run(@test, __MODULE__)
       end
     end
   end
@@ -59,6 +65,20 @@ defmodule Test do
 end
 
 defmodule Assertion.Test do
+
+  def run(tests, module) do
+    Enum.each tests, fn {test_func, description} ->
+      case apply(module, test_func, []) do
+        :ok -> IO.write "."  # Does not append a new line after the content
+        {:faiil, reason} -> IO.puts """
+        ==================================================
+        FAILURE: #{description}
+        ==================================================
+        #{reason}
+        """
+      end
+    end
+  end
 
   def assert(:==, lhs, rhs )  when lhs == rhs, do: IO.puts "."
 
