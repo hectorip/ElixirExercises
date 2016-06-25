@@ -6,7 +6,6 @@ defmodule Assertion do
   # Expected 10
   # to be lees than: 1
 
-  # asserting like in exunit
   defmacro extend(_options \\ []) do
     quote do
       import unquote(__MODULE__)
