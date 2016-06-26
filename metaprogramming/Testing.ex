@@ -43,7 +43,11 @@ defmodule Assertion do
 
     operator_map = %{
       ==: :!==,
-      !==: :==
+      !==: :==,
+      <: :>=,
+      >: :<=,
+      <=: :>,
+      >=: :<
       }
     IO.inspect lhs
     IO.inspect rhs
