@@ -150,6 +150,15 @@ defmodule Assertion.Test do
     """}
   end
 
+  def assert(:!==, lhs, rhs) when lhs !== rhs, do: :ok
+
+  def assert(:!==, lhs, rhs) do
+    {:fail, """
+      Expected: #{lhs}
+      to be different from: #{rhs}
+    """}
+  end
+
 end
 
 
