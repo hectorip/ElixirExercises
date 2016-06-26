@@ -43,11 +43,18 @@ defmodule Assertion do
     end
   end
 
+  defmacro refute({operator, _context, [lhs, rhs]}) do
+    quote bind_quoted: [lhs: lhs, rhs: rhs, operator: operator] do
+      Assertion.Test.refute(operator, lhs, rhs)
+    end
+  end
+
   defmacro assert({operator, _context, [lhs, rhs]}) do
     quote bind_quoted: [lhs: lhs, rhs: rhs, operator: operator] do
       Assertion.Test.assert(operator, lhs, rhs)
     end
   end
+
 
 end
 
@@ -79,7 +86,19 @@ defmodule Assertion.Test do
       end
     end
   end
-
+  def run_parallel(tests, module) do
+    Enum.each tests, fn {test_func, description} ->
+      case apply(module, test_func, []) do
+        :ok -> IO.write "."  # Does not append a new line after the content
+        {:faiil, reason} -> IO.puts """
+        ==================================================
+        FAILURE: #{description}
+        ==================================================
+        #{reason}
+        """
+      end
+    end
+  end
   def assert(:==, lhs, rhs )  when lhs == rhs, do: :ok
 
   def assert(:==, lhs, rhs) do
@@ -127,6 +146,7 @@ defmodule Assertion.Test do
 
 end
 
+
 defmodule MathTest do
 
   use Assertion
@@ -148,8 +168,3 @@ defmodule MathTest do
   end
 
 end
-
-
-# defmodule MathTest do
-#   use Assertion
-# end
