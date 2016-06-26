@@ -59,7 +59,7 @@ defmodule Assertion do
 
   defmacro assert({:true, _context, []}) do
     quote do
-      IO.print(".")
+      IO.write(".")
     end
   end
 
@@ -99,7 +99,7 @@ defmodule Assertion.Test do
   def run(tests, module) do
     Enum.each tests, fn {test_func, description} ->
       case apply(module, test_func, []) do
-        :ok -> IO.write "."  # Does not append a new line after the content
+        :ok -> IO.puts "."  # Does not append a new line after the content
         {:fail, reason} -> IO.puts """
         ==================================================
         FAILURE: #{description}
@@ -114,6 +114,7 @@ defmodule Assertion.Test do
       case apply(module, test_func, []) do
         :ok -> IO.write "."  # Does not append a new line after the content
         {:faiil, reason} -> IO.puts """
+
         ==================================================
         FAILURE: #{description}
         ==================================================
@@ -200,7 +201,7 @@ defmodule MathTest do
   end
 
   test "Refuting some operations" do
-    refute 5 !== 7
+    refute 5 !== 5
   end
 
 end
