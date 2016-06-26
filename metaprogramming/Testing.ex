@@ -55,6 +55,12 @@ defmodule Assertion do
     end
   end
 
+  defmacro assert({:true, _context, []}) do
+    quote do
+      IO.print(".")
+    end
+  end
+
   defmacro assert({operator, _context, [lhs, rhs]}) do
     quote bind_quoted: [lhs: lhs, rhs: rhs, operator: operator] do
       Assertion.Test.assert(operator, lhs, rhs)
