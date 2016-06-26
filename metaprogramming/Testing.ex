@@ -26,7 +26,7 @@ defmodule Assertion do
     quote do
       def run do
         IO.puts "Running tests... (#{inspect @tests})"
-        Assertion.Test.run(@test, __MODULE__)
+        Assertion.Test.run(@tests, __MODULE__)
       end
     end
   end
@@ -45,8 +45,14 @@ defmodule Assertion do
       ==: :!==,
       !==: :==
       }
+    IO.inspect lhs
+    IO.inspect rhs
+    IO.inspect operator
     negated_operator = Dict.get(operator_map, operator)
+    IO.inspect negated_operator
     quote bind_quoted: [lhs: lhs, rhs: rhs, operator: negated_operator] do
+      IO.inspect operator
+      IO.puts "REFUTTEEEE"
       Assertion.Test.assert(operator, lhs, rhs)
     end
   end
@@ -94,7 +100,7 @@ defmodule Assertion.Test do
     Enum.each tests, fn {test_func, description} ->
       case apply(module, test_func, []) do
         :ok -> IO.write "."  # Does not append a new line after the content
-        {:faiil, reason} -> IO.puts """
+        {:fail, reason} -> IO.puts """
         ==================================================
         FAILURE: #{description}
         ==================================================
@@ -191,6 +197,10 @@ defmodule MathTest do
     assert 5 * 5 == 25
     assert 7 * 9 == 36
 
+  end
+
+  test "Refuting some operations" do
+    refute 5 !== 7
   end
 
 end
