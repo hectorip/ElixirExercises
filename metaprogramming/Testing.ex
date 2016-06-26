@@ -1,10 +1,6 @@
+# Exercise of creating a mini testing framework from Metaprogramming Elixir
+
 defmodule Assertion do
-  # Expected Result:
-  #
-  # ..
-  # FAILURE:
-  # Expected 10
-  # to be lees than: 1
 
   defmacro extend(_options \\ []) do
     quote do
