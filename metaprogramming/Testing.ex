@@ -44,8 +44,14 @@ defmodule Assertion do
   end
 
   defmacro refute({operator, _context, [lhs, rhs]}) do
-    quote bind_quoted: [lhs: lhs, rhs: rhs, operator: operator] do
-      Assertion.Test.refute(operator, lhs, rhs)
+
+    operator_map = %{
+      ==: :!==,
+      !==: :==
+      }
+    negated_operator = Dict.get(operator_map, operator)
+    quote bind_quoted: [lhs: lhs, rhs: rhs, operator: negated_operator] do
+      Assertion.Test.assert(operator, lhs, rhs)
     end
   end
 
