@@ -12,3 +12,6 @@ of the book "Metaprogramming Elixir"
 
 ## Advice
 - The first and foremost advice I have is: write yourself everything
+
+
+There should be an Spanish version of this
