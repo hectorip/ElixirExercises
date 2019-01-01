@@ -5,7 +5,7 @@ defmodule Math do
       lhs = unquote(lhs)
       rhs = unquote(rhs)
       result = lhs + rhs
-      IO.puts "#{lhs} plus #{rhs} is #{result}"
+      IO.puts("#{lhs} plus #{rhs} is #{result}")
     end
   end
 
@@ -15,7 +15,7 @@ defmodule Math do
       lhs = unquote(lhs)
       rhs = unquote(rhs)
       result = lhs * rhs
-      IO.puts "#{lhs} times #{rhs} is #{result}"
+      IO.puts("#{lhs} times #{rhs} is #{result}")
     end
   end
 end

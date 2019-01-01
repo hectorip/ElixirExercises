@@ -1,8 +1,7 @@
 defmodule Controls do
-
-
   defmacro while(condition, do: code) do
-    IO.inspect code
+    IO.inspect(code)
+
     quote do
       try do
         # This list comprehension will not allow modify external
@@ -14,7 +13,7 @@ defmodule Controls do
           if unquote(condition) do
             unquote(code)
           else
-            throw :break
+            throw(:break)
           end
         end
       catch
@@ -23,7 +22,5 @@ defmodule Controls do
     end
   end
 
-  def break, do: throw :break
-  end
-
+  def break, do: throw(:break)
 end
