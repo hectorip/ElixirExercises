@@ -1,5 +1,6 @@
 # 'quote' and 'unquote' are like string interpolation in AST
-# 'unquote' is like delaying code execution
+# 'unquote' is like delaying code execution and injecting the 
+# values from the external context into an AST
 # 'quote' is requesting the internal representation of the code
 # inside the do clause
 
