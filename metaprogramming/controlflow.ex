@@ -15,7 +15,7 @@ end
 defmodule UsingUnless do
   require ControlFlow
 
-  def doSomething do
+  def try_unless do
     ControlFlow.unless false do
       IO.puts("works")
     end
