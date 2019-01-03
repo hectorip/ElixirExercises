@@ -1,15 +1,15 @@
 defmodule Debugger do
-  # Here, the function or the code being unquoted two times is wrong
+  # bind_quoted prevents evaluating the code two times
   defmacro log(expression) do
     if Application.get_env(:debugger, :log_level) == :debug do
       quote bind_quoted: [expression: expression] do
         IO.puts("***********************************")
-        IO.inspect(expression)
+        IO.inspect(expression) # 1
         IO.puts("***********************************")
-        expression
+        expression # 2
       end
     else
-      expression
+      expression # 3 times
     end
   end
 end
