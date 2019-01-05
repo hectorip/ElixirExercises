@@ -62,7 +62,7 @@ defmodule Translator do
     defp append_path(current, next), do: "#{current}.#{next}"
 end
 
-defmodule EmojiTranslate do
+defmodule I18ñ do
     use Translator
 
     locale "emoji",
