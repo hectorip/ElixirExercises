@@ -18,13 +18,22 @@ defmodule Translator do
     end
     def compile(translations) do
         translations_ast = for {locale, source} <- translations do
-            deftranslations(locale, "", source)
+            [
+                quote do
+                    def unquote(String.to_atom(locale))(path, binding \\ [])
+                end
+            ] ++ deftranslations(locale, "", source) ++ 
+            [
+                quote do
+                    def unquote(String.to_atom(locale))(_path, _bindings), do: {:error, :no_translation}
+                end
+            ]
         end
 
         quote do
-            def t(locale, path, binding \\ [])
+            # def String.to_atom(unquote(locale))(unquote(path), binding \\ [])
             unquote(translations_ast)
-            def t(_locale, _path, _bindings), do: {:error, :no_translation}
+            # def String.to_atom(unquote(locale))(_path, _bindings), do: {:error, :no_translation}
         end
     end
 
@@ -35,7 +44,7 @@ defmodule Translator do
                 deftranslations(locale, path, v)
             else
                 quote do
-                    def t(unquote(locale), unquote(path), bindings) do
+                    def unquote(String.to_atom(locale))(unquote(path), bindings) do
                         unquote(interpolate(v))
                     end
                 end
@@ -62,7 +71,7 @@ defmodule Translator do
     defp append_path(current, next), do: "#{current}.#{next}"
 end
 
-defmodule I18ñ do
+defmodule I18n do
     use Translator
 
     locale "emoji",
